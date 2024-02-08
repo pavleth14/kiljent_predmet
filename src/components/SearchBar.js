@@ -11,10 +11,12 @@ const SearchBar = ({clientList}) => {
 
     useEffect(() => {
         console.log('filteredArr: ',filteredArr);
+        
     }, [filteredArr])
 
     const handleButton = (e) => {
         e.preventDefault();
+        setFilteredArr([]);
         findClientByName();
     }
 
@@ -28,7 +30,7 @@ const SearchBar = ({clientList}) => {
 
         if(isMatch === false) {
             console.log('Match is false');
-            setFilteredArr([]);
+            // setFilteredArr([]);
         }
 
         clientList.map(client => {

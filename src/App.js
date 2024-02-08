@@ -43,9 +43,9 @@ function App() {
       if (isMatch) {
 
         const updatedSubjects = clientList.map(client => {
-            if (client.currentCourtCode === currentCourtCode) {
+            if (client.currentCourtCode === currentCourtCode && client.name !== name && client.lastName !== lastName) {
                 // Add the new subject to the client's existing subjects
-                return { ...client, subject: [client.subject, subject] };
+                return { ...client, subject: [...client.subject, subject] };
             }
             return client;
         });
