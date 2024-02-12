@@ -36,14 +36,14 @@ function App() {
 
   const checkIsClientExistBasedOnCourtCode = () => {
 
-      const isMatch = clientList.some(client => client.currentCourtCode === currentCourtCode);
+      const isMatch = clientList.some(client => client.currentCourtCode === currentCourtCode && client.name === name && client.lastName === lastName);
 
       console.log(isMatch);
 
       if (isMatch) {
 
         const updatedSubjects = clientList.map(client => {
-            if (client.currentCourtCode === currentCourtCode && client.name !== name && client.lastName !== lastName) {
+            if (client.currentCourtCode === currentCourtCode && client.name === name && client.lastName === lastName) {
                 // Add the new subject to the client's existing subjects
                 return { ...client, subject: [...client.subject, subject] };
             }
@@ -55,7 +55,7 @@ function App() {
         return;
       }
 
-      setClientList(prevState => [...prevState, { name: name, lastName: lastName, currentCourtCode: currentCourtCode, subject: subject }]);
+      setClientList(prevState => [...prevState, { name: name, lastName: lastName, currentCourtCode: currentCourtCode, subject: [subject] }]);
       
   }
 
